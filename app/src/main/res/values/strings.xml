@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">EnunciatPT16</string>
+    <string name="insertar">Insertar</string>
+    <string name="borrar">Borrar</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="consultar">Consultar</string>
+    <string name="description">Description</string>
+    <string name="icon">icon</string>
+
+    <string-array name="quevol">
+        <item>Que toqui la loteria</item>
+        <item>Que no plogui tant</item>
+        <item>Que faci sol</item>
+        <item>Menjar torrons</item>
+        <item>Menja avellanes</item>
+        <item>Nocilla</item>
+    </string-array>
+
+</resources>
