@@ -2,18 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_info"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:orientation="vertical"
-    android:id="@+id/layout_info">
+    tools:context=".MainActivity">
 
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="294dp"
         android:layout_height="wrap_content"
-        android:text="Sortida valors Fitxers"
-        android:id="@+id/textView"
+        android:text="@string/sortida"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -28,33 +28,34 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="48dp" />
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <EditText
-        android:id="@+id/editTextCity"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:text="Barcelona" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/buttonX"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Xml" />
+        <EditText
+            android:id="@+id/editTextCity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:inputType="text"
+            android:text="@string/barcelona" />
 
-    <Button
-        android:id="@+id/buttonJ"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="JSon" />
+        <Button
+            android:id="@+id/buttonX"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/xml" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/buttonJ"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/json" />
+
+    </LinearLayout>
     <!--ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
@@ -71,7 +72,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
-
 
 
 </LinearLayout>

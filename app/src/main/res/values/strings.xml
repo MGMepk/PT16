@@ -6,6 +6,10 @@
     <string name="consultar">Consultar</string>
     <string name="description">Description</string>
     <string name="icon">icon</string>
+    <string name="barcelona">Barcelona</string>
+    <string name="xml">Xml</string>
+    <string name="json">JSon</string>
+    <string name="sortida">Sortida valors Fitxers</string>
 
     <string-array name="quevol">
         <item>Que toqui la loteria</item>

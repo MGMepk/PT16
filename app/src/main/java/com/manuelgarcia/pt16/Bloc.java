@@ -2,8 +2,6 @@ package com.manuelgarcia.pt16;
 
 public class Bloc {
 
-    /* A la PT16, la classe s'ha de dir Bloc */
-
     private String data;
     private String tempe;
     private String imatge;
@@ -11,8 +9,6 @@ public class Bloc {
 
 
     Bloc(String data, String tempe, String imatge, String humid) {
-        {
-        }
 
         this.data = data;
         this.tempe = tempe;
@@ -25,9 +21,6 @@ public class Bloc {
         return humidity;
     }
 
-    void setHumidity(String humidity) {
-        this.humidity = humidity;
-    }
 
     String getData() {
         return data;
@@ -39,6 +32,11 @@ public class Bloc {
 
     String getImatge() {
         return imatge;
+    }
+
+
+    public void setHumidity(String humidity) {
+        this.humidity = humidity;
     }
 
     public void setData(String data) {

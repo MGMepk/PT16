@@ -4,6 +4,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
@@ -23,30 +24,54 @@ class Parser extends AppCompatActivity {
         String temperature = null;
         String calorFred = null;
         Bloc temp;
-        String humid=null;
+        String humid = null;
 
         List<Bloc> llista = new ArrayList<>();
-        String direccion="";
-
-        //https://www.jetbrains.com/help/idea/2017.3/set-up-a-git-repository.html#clone-repo
-
-        // TODO: 18/12/19 acabar
+        String direccion = "";
 
         //Creem un objecte JSONObject para poder acceder als atributs o camps
         JSONObject respuestaJSON = null;   //Creo un JSONObject a partir del StringBuilder passat
         try {
             respuestaJSON = new JSONObject(json);
 
-            //accedim al vector de resultats
+            JSONArray resultsJSON = respuestaJSON.getJSONArray("list");
 
-            //Log.d("test", "dades: "   + direccion);
+            if (resultsJSON.length() > 0) {
+                Integer integer = 0;
+                while (integer < resultsJSON.length()) {
+                    temperature = resultsJSON.getJSONObject(integer).getJSONObject("main").getString("temp");
 
+                    humid = resultsJSON.getJSONObject(integer).getJSONObject("main").getString("humidity");
+                    String dia = resultsJSON.getJSONObject(integer).getString("dt_txt").substring(8, 10);
+                    String mes = resultsJSON.getJSONObject(integer).getString("dt_txt").substring(5, 7);
+                    String hora = resultsJSON.getJSONObject(integer).getString("dt_txt").substring(11, 16);
+                    time = dia + " - " + mes + " | " + hora;
+                    if (temperature != null) {
+                        if (Double.parseDouble(temperature) >= 20) {
+                            calorFred = "hot";
+                        } else {
+                            calorFred = "cold";
+                        }
+                    }
 
+                    temp = new Bloc(time, temperature, calorFred, humid);
+                    Log.d("JSON", "bloc " + String.valueOf(integer) + " " + time + " " + temperature + " " + humid + " " + calorFred);
+                    llista.add(temp);
+                    time = null;
+                    humid = null;
+                    temperature = null;
+                    integer += 1;
+
+                    Log.d("JSON", "dades " + direccion);
+
+                }
+
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();
             Log.d("test", "parsejaJSon: " + e.getMessage());
-        } catch (Exception e){
+        } catch (Exception e) {
             Log.d("test", "exc: " + e.getMessage());
 
         }
@@ -57,7 +82,7 @@ class Parser extends AppCompatActivity {
 
         String time = null;
         String temperature = null;
-        String calorFred = null, humid=null;
+        String calorFred = null, humid = null;
         Bloc temp;
 
         List<Bloc> llista = new ArrayList<>();
@@ -65,9 +90,6 @@ class Parser extends AppCompatActivity {
         XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
         factory.setNamespaceAware(true);
         XmlPullParser xpp = factory.newPullParser();
-
-        //https://www.google.com/maps/place/Institut+Escola+del+Treball/@41.3890464,2.1454964,17z/data=!3m1!4b1!4m5!3m4!1s0x12a4a2847eeed3b5:0xfcbfd60966182d80!8m2!3d41.3890464!4d2.1476851
-        //http://maps.googleapis.com/maps/api/geocode/json?latlng=41.3890464,2.1454964
 
 
         xpp.setInput(new StringReader(xml));
@@ -95,15 +117,15 @@ class Parser extends AppCompatActivity {
 
                 if (time != null && temperature != null) {
                     try {
-                        time = time.replace   ("T"," ");
-                        temp = new Bloc(time, temperature, calorFred,humid);
+                        time = time.replace("T", " ");
+                        temp = new Bloc(time, temperature, calorFred, humid);
                         // Log.d("test", "parsejant "+time+temperature+calorFred+humid);
                         llista.add(temp);
-                        time=null;
-                        temperature=null;
+                        time = null;
+                        temperature = null;
                     } catch (Exception e) {
                         e.printStackTrace();
-                        Log.d("test", "parsejaXml: "+e.getMessage());
+                        Log.d("test", "parsejaXml: " + e.getMessage());
                     }
                 }
             }
@@ -111,7 +133,7 @@ class Parser extends AppCompatActivity {
             eventType = xpp.next();
 
         }
-        if (llista==null) Log.d("test", "llista nula");
+        if (llista == null) Log.d("test", "llista nula");
         return llista;
     }
 

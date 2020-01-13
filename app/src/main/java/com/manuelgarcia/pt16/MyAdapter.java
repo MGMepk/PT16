@@ -11,11 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+
     private List<String> values;
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
     class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         TextView txtHeader;
@@ -54,7 +52,7 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
         View v =
-                inflater.inflate(R.layout.example_item, parent, false);
+                inflater.inflate(R.layout.row_layout, parent, false);
 
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);

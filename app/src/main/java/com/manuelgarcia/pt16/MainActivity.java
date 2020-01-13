@@ -43,6 +43,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
+
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter, tAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -191,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                     nomCiutat + "&units=metric&mode=xml&appid=" + API_KEY;
         else
             myUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" +
-                    nomCiutat + "&units=metric&appid=" + API_KEY;
+                    nomCiutat + "&units=metric&mode=json&appid=" + API_KEY;
 
         Log.d("test", myUrl);
         Descarregador descarregador = new Descarregador(this);
